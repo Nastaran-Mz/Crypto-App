@@ -1,12 +1,11 @@
 
 
-function TableCoin({ coins }) {
-    console.log(coins);
+export function Tablecoin({coins}) {
+    
 
     return (
         <>
-            <h1>table</h1>
+          <h1>tablecoin</h1>  
         </>
     )
 }
-export default TableCoin;
