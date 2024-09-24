@@ -1,3 +1,4 @@
+import { Homepage } from "./components/templats/Homepage"
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
   return (
     <>
       
-        <h1>Crypto App</h1>
+        <Homepage/>
    
     </>
   )
