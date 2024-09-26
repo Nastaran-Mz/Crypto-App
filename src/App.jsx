@@ -1,4 +1,5 @@
-import { Homepage } from "./components/templats/Homepage"
+import HomePage from "./components/templats/Homepage"
+
 
 
 function App() {
@@ -6,8 +7,7 @@ function App() {
 
   return (
     <>
-      
-        <Homepage/>
+      <HomePage/>
    
     </>
   )
