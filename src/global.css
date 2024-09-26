@@ -9,8 +9,8 @@ body {
   padding: 10px;
   display: flex;
   place-items: center;
-  max-width: 883px;
-  min-height: 100vh;
+  max-width: 800px;
+  /* min-height: 100vh; */
   background-color: #131315;
   color: #fff;
 }

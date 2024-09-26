@@ -1,8 +1,7 @@
-import { useState } from "react"
+/* eslint-disable react/prop-types */
 
-
-export function Paginaton() {
-    const [page,setPage] = useState(1);
+export function Paginaton({page,setPage}) {
+    
     const previousHandler = () => {
         if (page <= 1) return;
       setPage((page) => page - 1);
