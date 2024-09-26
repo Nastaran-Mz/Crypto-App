@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import { getCoinList } from "../../services/cryptoApi";
 import TableCoin from "../modules/Tablecoin";
+import { Paginaton } from "../modules/Paginaton";
 
 
 
@@ -22,7 +23,9 @@ import TableCoin from "../modules/Tablecoin";
   return (
     <>
       <div>
+      <Paginaton />
          <TableCoin coins={coins} isLoading={isLoading}/>
+         
       </div>
     </>
   );
