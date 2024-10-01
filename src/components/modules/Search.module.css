@@ -47,5 +47,11 @@
     list-style: none;
     display: flex;
     margin-bottom: 15px;
-    
+    padding-bottom: 5px;
+    border-bottom: 2px solid #22262e;
+}
+.searchResult li img{
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
 }
