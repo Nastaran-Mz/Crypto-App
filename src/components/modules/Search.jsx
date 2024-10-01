@@ -6,14 +6,25 @@ export function Search({ currency, setCurrency }) {
   const [coins,setCoins] = useState([]);
 
   useEffect (() => {
+    const controller = new AbortController();
     if (!text) return;
 
     const search = async () => {
-         const res = await fetch (searchCoin(text));
-         const json = await res.json();
-         if (json.coins) setCoins(json.coins);
-    }
+        try{
+            const res = await fetch(searchCoin(text),{signal:controller.signal});
+            const json = await res.json();
+            if (json.coins) {setCoins(json.coins)} else{
+                alert(json.status.error_message)
+            };
+        }catch (error){
+            if (error.name ==! "AbortError"){
+                alert(error.message);
+            }
+        }
+      
+    };
     search();
+    return () => controller.abort();
   },[text])
 
   return (
@@ -23,7 +34,7 @@ export function Search({ currency, setCurrency }) {
           type="text"
           placeholder="Search"
           value={text}
-          onChange={(e) => setCurrency(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
         />
         <select value={currency} onChange={(e) => setText(e.target.value)}>
           <option value="usd">USD</option>
