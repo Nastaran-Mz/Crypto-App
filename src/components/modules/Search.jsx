@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { searchCoin } from "../../services/cryptoApi";
+import { RotatingLines } from "react-loader-spinner";
 
+// eslint-disable-next-line react/prop-types
 export function Search({ currency, setCurrency }) {
   const [text, setText] = useState("");
   const [coins,setCoins] = useState([]);
-
+  const [isLoading,setIsLoading] = useState(true);
   useEffect (() => {
     const controller = new AbortController();
+    setCoins([]);
     if (!text) return;
 
     const search = async () => {
@@ -36,11 +39,20 @@ export function Search({ currency, setCurrency }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <select value={currency} onChange={(e) => setText(e.target.value)}>
+        <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
           <option value="usd">USD</option>
           <option value="eur">EUR</option>
           <option value="jpy">JPY</option>
         </select>
+        <div>
+            {isLoading && <RotatingLines width="50px" height="50px"/>}
+            <ul>
+                {coins.map(coin => <li key={coin.id}>
+                    <img src={coin.thumb} alt={coin.name}/>
+                    <p>{coin.name}</p>
+                </li>)}
+            </ul>
+        </div>
       </div>
     </>
   );
