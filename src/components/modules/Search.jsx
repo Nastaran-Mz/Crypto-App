@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { searchCoin } from "../../services/cryptoApi";
 import { RotatingLines } from "react-loader-spinner";
-
+import styles from "./Search.module.css"
 // eslint-disable-next-line react/prop-types
 export function Search({ currency, setCurrency }) {
   const [text, setText] = useState("");
@@ -39,7 +39,7 @@ export function Search({ currency, setCurrency }) {
 
   return (
     <>
-      <div>
+      <div className={styles.searchBox}>
         <input
           type="text"
           placeholder="Search"
@@ -51,7 +51,7 @@ export function Search({ currency, setCurrency }) {
           <option value="eur">EUR</option>
           <option value="jpy">JPY</option>
         </select>
-        <div>
+        <div className={styles.searchResult}>
           {isLoading && (
             <RotatingLines
               width="50px"
