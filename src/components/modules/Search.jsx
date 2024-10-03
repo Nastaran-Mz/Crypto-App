@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { searchCoin } from "../../services/cryptoApi";
 import { RotatingLines } from "react-loader-spinner";
-import styles from "./Search.module.css"
+import styles from "./Search.module.css";
 // eslint-disable-next-line react/prop-types
 export function Search({ currency, setCurrency }) {
   const [text, setText] = useState("");
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const controller = new AbortController();
     setCoins([]);
-    if (!text) {setIsLoading(false);
-        return;
+    if (!text) {
+      setIsLoading(false);
+      return;
     }
 
     const search = async () => {
@@ -27,7 +29,7 @@ export function Search({ currency, setCurrency }) {
           alert(json.status.error_message);
         }
       } catch (error) {
-        if (error.name == !"AbortError") {
+        if (error.name ==!"AbortError") {
           alert(error.message);
         }
       }
@@ -51,24 +53,26 @@ export function Search({ currency, setCurrency }) {
           <option value="eur">EUR</option>
           <option value="jpy">JPY</option>
         </select>
-        <div className={styles.searchResult}>
-          {isLoading && (
-            <RotatingLines
-              width="50px"
-              height="50px"
-              strokeWidth="2"
-              strokeColor="#3874ff"
-            />
-          )}
-          <ul>
-            {coins.map((coin) => (
-              <li key={coin.id}>
-                <img src={coin.thumb} alt={coin.name} />
-                <p>{coin.name}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {(!!coins.lenght || isLoading) && (
+          <div className={styles.searchResult}>
+            {isLoading && (
+              <RotatingLines
+                width="50px"
+                height="50px"
+                strokeWidth="2"
+                strokeColor="#3874ff"
+              />
+            )}
+            <ul>
+              {coins.map((coin) => (
+                <li key={coin.id}>
+                  <img src={coin.thumb} alt={coin.name} />
+                  <p>{coin.name}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );
