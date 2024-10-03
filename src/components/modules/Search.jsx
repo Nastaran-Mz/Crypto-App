@@ -54,24 +54,26 @@ export function Search({ currency, setCurrency }) {
           <option value="jpy">JPY</option>
         </select>
         {(!!coins.lenght || isLoading) && (
-          <div className={styles.searchResult}>
-            {isLoading && (
-              <RotatingLines
-                width="50px"
-                height="50px"
-                strokeWidth="2"
-                strokeColor="#3874ff"
-              />
-            )}
-            <ul>
-              {coins.map((coin) => (
-                <li key={coin.id}>
-                  <img src={coin.thumb} alt={coin.name} />
-                  <p>{coin.name}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className={styles.searchResult}>
+        {isLoading ? (
+          <RotatingLines
+            width="50px"
+            height="50px"
+            strokeWidth="2"
+            strokeColor="#3874ff"
+          />
+        ) : (
+          <ul>
+            {coins.map((coin) => (
+              <li key={coin.id} style={{ listStyle: "none", display: "flex", alignItems: "center", margin: "10px 0" }}>
+                <img src={coin.thumb} alt={coin.name} style={{ width: "30px", height: "30px", marginRight: "10px" }} />
+                <p>{coin.name}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      
         )}
       </div>
     </>

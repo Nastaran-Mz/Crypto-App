@@ -8,6 +8,7 @@
 .table{
     width: 100%;
     border-collapse: collapse;
+    table-layout: auto;
 }
 .table thead {
     border-bottom: 2px solid #fff;
@@ -16,7 +17,7 @@
 .table th{
     font-size: 1.2rem;
     text-align: left;
-    padding: 10px 0;
+    padding: 12px 20px;
 
 
 }
@@ -31,6 +32,7 @@
    display: flex;
    align-items: center;
    cursor: pointer;
+   gap: 10px;
 
 }
 .symbol img{
