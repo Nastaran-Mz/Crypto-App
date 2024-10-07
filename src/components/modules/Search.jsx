@@ -53,7 +53,7 @@ export function Search({ currency, setCurrency }) {
           <option value="eur">EUR</option>
           <option value="jpy">JPY</option>
         </select>
-        {(!!coins.lenght || isLoading) && (
+        {(!!coins.length || isLoading) && (
         <div className={styles.searchResult}>
         {isLoading ? (
           <RotatingLines
