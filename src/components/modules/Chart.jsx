@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from "./Chart.module.css";
 import { convertData } from "../../helpers/convertData";
 import { useState } from "react";
@@ -13,7 +14,7 @@ import {
 } from "recharts";
 export function Chart({ chart, setChart }) {
   const [type, setType] = useState("prices");
-  console.log(convertData(chart, type));
+  
 
   return (
     <>
@@ -22,6 +23,11 @@ export function Chart({ chart, setChart }) {
           X
         </span>
         <div className={styles.chart}>
+          <div className={styles.name}>
+            <img src={chart.coin.image} alt="" />
+            <p>{chart?.coin?.name || "No Name Available"}</p>
+
+          </div>
           <div className={styles.graph}>
             <ChartComponent data={convertData(chart, type)} type={type}/>
           </div>
